@@ -1,0 +1,44 @@
+[
+  { 
+    "id": "1", 
+    "url": "/images/ConcertAndLights.png", 
+    "category": "Concerts", 
+    "alt": "A. R. Ameen performing live on stage surrounded by striking concert lights." 
+  },
+  { 
+    "id": "2", 
+    "url": "/images/HansZimmerAndARR.png", 
+    "category": "Behind the Scenes", 
+    "alt": "A monumental moment: A. R. Ameen with Hans Zimmer and A. R. Rahman." 
+  },
+  { 
+    "id": "3", 
+    "url": "/images/LVEvent.png", 
+    "category": "Events", 
+    "alt": "A. R. Ameen looking stylish at an exclusive Louis Vuitton event." 
+  },
+  { 
+    "id": "4", 
+    "url": "/images/StagePerformance.png", 
+    "category": "Concerts", 
+    "alt": "An energetic stage performance capturing the essence of his live shows." 
+  },
+  { 
+    "id": "5", 
+    "url": "/images/WithTheMic.png", 
+    "category": "Studio Sessions", 
+    "alt": "A. R. Ameen working his magic behind the microphone in the studio." 
+  },
+  { 
+    "id": "6", 
+    "url": "/images/ameen_stage.png", 
+    "category": "Concerts", 
+    "alt": "Commanding the stage and interacting with thousands of fans." 
+  },
+  { 
+    "id": "7", 
+    "url": "/images/performance_light_shining.png", 
+    "category": "Concerts", 
+    "alt": "A beautiful shot of a live performance with a spotlight shining down." 
+  }
+]

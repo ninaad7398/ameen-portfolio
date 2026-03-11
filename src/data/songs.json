@@ -1,0 +1,74 @@
+[
+  {
+    "id": "1",
+    "title": "Bheegi Bheegi",
+    "year": 2026,
+    "language": "Hindi",
+    "album": "Single",
+    "spotifyUrl": "https://open.spotify.com/album/3gSamGzuaJypB6V9z6CvrX",
+    "youtubeUrl": "https://youtube.com/",
+    "coverUrl": "/images/ameen_dp.jpg",
+    "previewUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
+    "description": "Latest 2026 release."
+  },
+  {
+    "id": "2",
+    "title": "Chikiri Chikiri",
+    "year": 2025,
+    "language": "Tamil",
+    "album": "Peddi",
+    "spotifyUrl": "https://open.spotify.com/album/1M0XdsKXgbBmA8kerPUb2z",
+    "youtubeUrl": "https://youtube.com/",
+    "coverUrl": "/images/ameen_dp.jpg",
+    "previewUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3",
+    "description": "Featured in the movie Peddi."
+  },
+  {
+    "id": "3",
+    "title": "Avalidam Sol",
+    "year": 2025,
+    "language": "Tamil",
+    "album": "Tere Ishk Mein",
+    "spotifyUrl": "https://open.spotify.com/album/38kB0K2usRUPWp1Q30Xg9u",
+    "youtubeUrl": "https://youtube.com/",
+    "coverUrl": "/images/ameen_dp.jpg",
+    "previewUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3",
+    "description": "Featured in Tere Ishk Mein."
+  },
+  {
+    "id": "4",
+    "title": "Ninaivirukka",
+    "year": 2023,
+    "language": "Tamil",
+    "album": "Pathu Thala",
+    "spotifyUrl": "https://open.spotify.com/album/5EEzSnYXyM3wzEjbf6Gj6M",
+    "youtubeUrl": "https://youtube.com/",
+    "coverUrl": "/images/ameen_dp.jpg",
+    "previewUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-6.mp3",
+    "description": "An intense track that resonated strongly with the audience from Pathu Thala."
+  },
+  {
+    "id": "5",
+    "title": "Never Say Goodbye",
+    "year": 2020,
+    "language": "English",
+    "album": "Dil Bechara",
+    "spotifyUrl": "https://open.spotify.com/album/4oqHzs0MjR7dug91wb29fb",
+    "youtubeUrl": "https://youtube.com/",
+    "coverUrl": "/images/ameen_dp.jpg",
+    "previewUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3",
+    "description": "An emotional track from the movie Dil Bechara."
+  },
+  {
+    "id": "6",
+    "title": "Maula Wa Sallim",
+    "year": 2015,
+    "language": "Tamil",
+    "album": "O Kadhal Kanmani",
+    "spotifyUrl": "https://open.spotify.com/album/6XBC9UsX48MzHICIr9m0hj",
+    "youtubeUrl": "https://youtube.com/",
+    "coverUrl": "/images/ameen_dp.jpg",
+    "previewUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
+    "description": "A beautiful traditional Islamic prayer song featured in the movie O Kadhal Kanmani, marking A. R. Ameen's playback singing debut."
+  }
+]
