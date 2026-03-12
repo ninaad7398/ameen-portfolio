@@ -17,6 +17,16 @@ export default function SongDetailModal({ song, onClose }) {
     };
   }, [song]);
 
+  // Convert standard Spotify URL to an Embed URL
+  const spotifyEmbedUrl = song?.spotifyUrl?.includes('spotify.com') 
+    ? song.spotifyUrl.replace('spotify.com/', 'spotify.com/embed/') 
+    : "https://open.spotify.com/embed/artist/0pO2eJn9QBtNRVdLxI1nrE";
+
+  // Provide a real A. R. Ameen live performance fallback
+  const youtubeEmbedUrl = song?.youtubeUrl?.includes('youtube.com/embed') 
+    ? song.youtubeUrl 
+    : "https://www.youtube.com/embed/nzMn4nEf_1A?si=rNzr910Ty7teWVlK";
+
   return (
     <AnimatePresence>
       {song && (
@@ -62,7 +72,7 @@ export default function SongDetailModal({ song, onClose }) {
                   <h4 className="text-white/60 text-xs uppercase tracking-widest mb-3">Listen on Spotify</h4>
                   <div className="bg-[#181818] rounded-xl overflow-hidden border border-white/5 h-[152px]">
                     <iframe
-                      src="https://open.spotify.com/embed/track/25SThXqC3z9kXlyjE98f8P?utm_source=generator&theme=0"
+                      src={spotifyEmbedUrl}
                       width="100%"
                       height="152"
                       frameBorder="0"
@@ -79,7 +89,7 @@ export default function SongDetailModal({ song, onClose }) {
                     <iframe 
                       width="100%" 
                       height="100%" 
-                      src="https://www.youtube.com/embed/dQw4w9WgXcQ?si=abcdef123456" 
+                      src={youtubeEmbedUrl} 
                       title="YouTube video player" 
                       frameBorder="0" 
                       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
