@@ -1,10 +1,10 @@
 export const getAccessToken = async () => {
-  const client_id = process.env.SPOTIFY_CLIENT_ID;
-  const client_secret = process.env.SPOTIFY_CLIENT_SECRET;
+  const client_id = process.env.SPOTIFY_CLIENT_ID?.trim();
+  const client_secret = process.env.SPOTIFY_CLIENT_SECRET?.trim();
   
   if (!client_id || !client_secret) {
     console.warn("Spotify Client ID or Secret is missing in environment variables.");
-    return { error: 'Missing ENV Keys' };
+    return null;
   }
 
   const basic = Buffer.from(`${client_id}:${client_secret}`).toString("base64");
@@ -20,58 +20,33 @@ export const getAccessToken = async () => {
       body: new URLSearchParams({
         grant_type: "client_credentials",
       }),
-      cache: "no-store",
+      next: { revalidate: 3600 },
     });
     return response.json();
   } catch (error) {
     console.error("Error fetching Spotify access token:", error);
-    return { error: error.message };
+    return null;
   }
 };
 
 export const getArtistAlbums = async () => {
   const tokenData = await getAccessToken();
-  if (!tokenData || !tokenData.access_token) {
-    return [{
-      id: "err_token",
-      title: "Vercel ENV Missing or Token Error",
-      year: 2024,
-      language: "Debug",
-      album: tokenData?.error || "Unknown Error",
-      spotifyUrl: "",
-      youtubeUrl: "",
-      coverUrl: "/images/ConcertAndLights.png",
-      previewUrl: "",
-      description: "Please check your Vercel Environment Variables. SPOTIFY_CLIENT_ID and SPOTIFY_CLIENT_SECRET might be missing."
-    }];
-  }
+  if (!tokenData || !tokenData.access_token) return [];
 
-  const ARTIST_ID = process.env.SPOTIFY_ARTIST_ID || "0pO2eJn9QBtNRVdLxI1nrE";
-  const ALBUMS_ENDPOINT = `https://api.spotify.com/v1/artists/${ARTIST_ID}/albums?include_groups=album,single&limit=50&market=IN&cacheBust=${Date.now()}`;
+  const ARTIST_ID = (process.env.SPOTIFY_ARTIST_ID || "0pO2eJn9QBtNRVdLxI1nrE").trim();
+  // Changed limit to 40 to bust the Next.js Vercel Data Cache from the previously poisoned builds
+  const ALBUMS_ENDPOINT = `https://api.spotify.com/v1/artists/${ARTIST_ID}/albums?include_groups=album,single&limit=40&market=IN`;
 
   try {
     const response = await fetch(ALBUMS_ENDPOINT, {
       headers: {
         Authorization: `Bearer ${tokenData.access_token}`,
       },
-      cache: "no-store",
+      next: { revalidate: 3600 },
     });
     const data = await response.json();
     
-    if (!data.items) {
-      return [{
-        id: "err_albums",
-        title: "Album Fetch Error",
-        year: 2024,
-        language: "Debug",
-        album: "API Failed",
-        spotifyUrl: "",
-        youtubeUrl: "",
-        coverUrl: "/images/ConcertAndLights.png",
-        previewUrl: "",
-        description: JSON.stringify(data)
-      }];
-    }
+    if (!data.items) return [];
 
     const formattedData = data.items.map((album) => ({
       id: album.id,
@@ -81,7 +56,7 @@ export const getArtistAlbums = async () => {
       album: album.album_type === "single" ? "Single Release" : album.name,
       spotifyUrl: album.external_urls.spotify,
       youtubeUrl: "",
-      coverUrl: album.images[0]?.url || "/images/ConcertAndLights.png",
+      coverUrl: album.images[0]?.url || "/images/placeholder-album.jpg",
       previewUrl: "",
       description: `Released on ${album.release_date}.`
     }));
@@ -98,17 +73,6 @@ export const getArtistAlbums = async () => {
     return uniqueAlbums;
   } catch (error) {
     console.error("Error fetching Spotify albums:", error);
-    return [{
-      id: "err_catch",
-      title: "Fetch Exception",
-      year: 2024,
-      language: "Debug",
-      album: "Try Catch Error",
-      spotifyUrl: "",
-      youtubeUrl: "",
-      coverUrl: "/images/ConcertAndLights.png",
-      previewUrl: "",
-      description: error.message
-    }];
+    return [];
   }
 };
